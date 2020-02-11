@@ -3,8 +3,9 @@
     .row
       .col.pt-3
         h2 Simple WKT
-        p.small
-          | By Alberto Rico
+          span.smalltext.ml-2 By Alberto Rico
+            a.ml-2(href="https://github.com/alrico88/Simple-WKT", target="_blank")
+              i.fa.fa-github-square
     .row
       .col
         ZoomCenterTransition(:group="true")
@@ -15,10 +16,30 @@
             .card-body.p-2
               p.mb-0
                 | {{ polygon.wkt }}
-            .card-footer
-              a(href="#", @click.prevent="copyToClip(polygon.wkt)") Copy to clipboard
-              a.text-danger.float-right(href="#", @click.prevent="deletePolygon(polygon.id)") Remove
+            .card-footer.p-2
+              button.btn.btn-sm.btn-primary.mr-2(href="#", v-clipboard:copy="polygon.wkt", v-clipboard:success="notifyClipSuccess", v-clipboard:error="notifyClipError")
+                i.fa.fa-copy
+                |  Copy to clipboard
+              button.btn.btn-sm.btn-primary(href="#", @click.prevent="downloadFile(polygon.id, polygon.wkt)")
+                i.fa.fa-save
+                |  Download as file
+              button.btn.btn-sm.btn-danger.float-right(href="#", @click.prevent="deletePolygon(polygon.id)")
+                i.fa.fa-trash
+                |  Remove
         .alert.alert-primary.border-primary(v-show="getPolygons.length === 0") Draw some shapes first!
+        ZoomCenterTransition
+          .alert.alert-primary.border-primary(v-show="getPolygons.length > 1")
+            .row
+              .col
+                p.mb-2 Get WKT of all features as GeometryCollection
+            .row
+              .col
+                button.btn.btn-sm.btn-primary.mr-2(href="#", v-clipboard:copy="getAsGeometryCollection", v-clipboard:success="notifyClipSuccess", v-clipboard:error="notifyClipError")
+                  i.fa.fa-copy
+                  |  Copy to clipboard
+                button.btn.btn-sm.btn-primary(href="#", @click.prevent="downloadFile('allFeatures', getAsGeometryCollection)")
+                  i.fa.fa-save
+                  |  Download as file
 </template>
 
 <script>
@@ -30,28 +51,11 @@ export default {
     ZoomCenterTransition,
   },
   computed: {
-    ...mapGetters(['getPolygons']),
+    ...mapGetters(['getPolygons', 'getAsGeometryCollection']),
   },
   methods: {
     deletePolygon(id) {
       this.$store.dispatch('deletePolygon', id);
-    },
-    copyToClip(content) {
-      if (navigator.clipboard) {
-        this.copyWithClipboardAPI(content);
-      } else {
-        alert('Clipboard API not supported, please, copy and paste manually');
-      }
-    },
-    copyWithClipboardAPI(content) {
-      navigator.clipboard
-        .writeText(content)
-        .then(() => {
-          this.notifyClipSuccess();
-        })
-        .catch((err) => {
-          this.notifyClipError(err);
-        });
     },
     notifyClipSuccess() {
       this.$notify({
@@ -69,6 +73,18 @@ export default {
         type: 'danger',
       });
     },
+    downloadFile(id, wkt) {
+      const element = document.createElement('a');
+      element.setAttribute(
+        'href',
+        'data:text/plain;charset=utf-8,' + encodeURIComponent(wkt)
+      );
+      element.setAttribute('download', `${id}.txt`);
+      element.style.display = 'none';
+      document.body.appendChild(element);
+      element.click();
+      document.body.removeChild(element);
+    },
   },
 };
 </script>
@@ -77,5 +93,8 @@ export default {
 .maxHeight {
   max-height: 100vh;
   overflow-y: auto;
+}
+.smalltext {
+  font-size: 14pt;
 }
 </style>
