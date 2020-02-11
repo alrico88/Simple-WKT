@@ -13,7 +13,7 @@
             .card-header.p-2
               .row.align-items-center
                 .col
-                  h5.mb-0.noFocus(contenteditable="true", @keydown.enter="changeId($event, polygon.id)")
+                  h5.mb-0
                     | {{ polygon.id }}
                 .col-4.text-right
                   p.mb-0 {{ getPolygonArea(polygon.id) }}km2
@@ -100,16 +100,6 @@ export default {
     },
     removeAll() {
       this.$store.dispatch('deleteAllPolygons');
-    },
-    changeId(event, id) {
-      const text = event.target.textContent.trim();
-      event.target.blur();
-      if (text !== '') {
-        this.$store.dispatch('changeId', {
-          id,
-          text,
-        });
-      }
     },
   },
 };

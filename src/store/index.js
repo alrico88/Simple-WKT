@@ -43,14 +43,6 @@ export default new Vuex.Store({
     deleteFromPolygons(state, position) {
       state.polygons.splice(position, 1);
     },
-    updatePolygonId(state, {index, text}) {
-      Vue.set(
-        state.polygons[index],
-        Object.assign(state.polygons[index], {
-          id: text,
-        })
-      );
-    },
   },
   actions: {
     addPolygon(context, GeoJSON) {
@@ -69,13 +61,6 @@ export default new Vuex.Store({
     },
     deleteAllPolygons(context) {
       context.commit('updatePolygons', []);
-    },
-    changeId(context, {id, text}) {
-      const pos = context.getters.getPolygonIds.indexOf(id);
-      context.commit('updatePolygonId', {
-        index: pos,
-        text,
-      });
     },
   },
   plugins: [vuexLocal.plugin],
