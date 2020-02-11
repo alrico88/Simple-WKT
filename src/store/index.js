@@ -50,6 +50,9 @@ export default new Vuex.Store({
         context.commit('deleteFromPolygons', pos);
       }
     },
+    deleteAllPolygons(context) {
+      context.commit('updatePolygons', []);
+    },
   },
   plugins: [vuexLocal.plugin],
 });

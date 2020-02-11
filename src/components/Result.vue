@@ -40,6 +40,15 @@
                 button.btn.btn-sm.btn-primary(href="#", @click.prevent="downloadFile('allFeatures', getAsGeometryCollection)")
                   i.fa.fa-save
                   |  Download as file
+        ZoomCenterTransition
+          .alert.alert-danger.border-danger(v-show="getPolygons.length > 1")
+            .row.align-items-center
+              .col
+                p.mb-0 Remove all drawn features at once
+              .col-3.text-right
+                button.btn.btn-sm.btn-danger(href="#", @click.prevent="removeAll")
+                  i.fa.fa-trash
+                  |  Remove
 </template>
 
 <script>
@@ -84,6 +93,9 @@ export default {
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
+    },
+    removeAll() {
+      this.$store.dispatch('deleteAllPolygons');
     },
   },
 };
