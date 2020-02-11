@@ -18,6 +18,11 @@ export default new Vuex.Store({
     getPolygons(state) {
       return state.polygons;
     },
+    getAsGeometryCollection(state) {
+      return `GEOMETRYCOLLECTION(${state.polygons
+        .map((d) => d.wkt)
+        .join(',')})`;
+    },
   },
   mutations: {
     updatePolygons(state, polygons) {
