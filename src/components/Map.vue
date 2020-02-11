@@ -5,7 +5,7 @@
 
 <script>
 import uuid from 'uuid/v4';
-import wkx from 'wkx';
+import {parseFromWK} from 'wkt-parser-helper';
 import {mapGetters} from 'vuex';
 import circle from '@turf/circle';
 
@@ -67,11 +67,14 @@ export default {
     drawPolygons(polygons) {
       const featureGroup = L.featureGroup();
       polygons.forEach((polygon) => {
-        const parsed = wkx.Geometry.parse(polygon.wkt);
+        const parsed = parseFromWK(polygon.wkt);
         function onEachFeature(feature, layer) {
-          layer.bindTooltip(polygon.id);
+          layer.bindTooltip(polygon.id, {
+            permanent: true,
+            direction: 'top',
+          });
         }
-        L.geoJSON(parsed.toGeoJSON(), {
+        L.geoJSON(parsed, {
           onEachFeature,
         }).addTo(featureGroup);
       });

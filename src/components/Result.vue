@@ -9,10 +9,14 @@
     .row
       .col
         ZoomCenterTransition(:group="true")
-          .card.mb-2(v-for="polygon of getPolygons", :key="polygon.id", v-show="getPolygons.length > 0")
+          .card.mb-2(v-for="(polygon, index) of getPolygons", :key="'card_' + index", v-show="getPolygons.length > 0")
             .card-header.p-2
-              h5.mb-0
-                | {{ polygon.id }}
+              .row.align-items-center
+                .col
+                  h5.mb-0.noFocus(contenteditable="true", @keydown.enter="changeId($event, polygon.id)")
+                    | {{ polygon.id }}
+                .col-4.text-right
+                  p.mb-0 {{ getPolygonArea(polygon.id) }}km2
             .card-body.p-2
               p.mb-0
                 | {{ polygon.wkt }}
@@ -45,7 +49,7 @@
             .row.align-items-center
               .col
                 p.mb-0 Remove all drawn features at once
-              .col-3.text-right
+              .col-4.text-right
                 button.btn.btn-sm.btn-danger(href="#", @click.prevent="removeAll")
                   i.fa.fa-trash
                   |  Remove
@@ -60,7 +64,7 @@ export default {
     ZoomCenterTransition,
   },
   computed: {
-    ...mapGetters(['getPolygons', 'getAsGeometryCollection']),
+    ...mapGetters(['getPolygons', 'getAsGeometryCollection', 'getPolygonArea']),
   },
   methods: {
     deletePolygon(id) {
@@ -96,6 +100,16 @@ export default {
     },
     removeAll() {
       this.$store.dispatch('deleteAllPolygons');
+    },
+    changeId(event, id) {
+      const text = event.target.textContent.trim();
+      event.target.blur();
+      if (text !== '') {
+        this.$store.dispatch('changeId', {
+          id,
+          text,
+        });
+      }
     },
   },
 };

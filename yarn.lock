@@ -831,6 +831,14 @@
     error-stack-parser "^2.0.0"
     string-width "^2.0.0"
 
+"@turf/area@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.npmjs.org/@turf/area/-/area-6.0.1.tgz#50ed63c70ef2bdb72952384f1594319d94f3b051"
+  integrity sha512-Zv+3N1ep9P5JvR0YOYagLANyapGWQBh8atdeR3bKpWcigVXFsEKNUw03U/5xnh+cKzm7yozHD6MFJkqQv55y0g==
+  dependencies:
+    "@turf/helpers" "6.x"
+    "@turf/meta" "6.x"
+
 "@turf/circle@^6.0.1":
   version "6.0.1"
   resolved "https://registry.npmjs.org/@turf/circle/-/circle-6.0.1.tgz#0ab72083373ae3c76b700c17a504ab1b5c0910b9"
@@ -856,6 +864,13 @@
   version "6.1.2"
   resolved "https://registry.npmjs.org/@turf/invariant/-/invariant-6.1.2.tgz#6013ed6219f9ac2edada9b31e1dfa5918eb0a2f7"
   integrity sha512-WU08Ph8j0J2jVGlQCKChXoCtI50BB3yEH21V++V0T4cR1T27HKCxkehV2sYMwTierfMBgjwSwDIsxnR4/2mWXg==
+  dependencies:
+    "@turf/helpers" "6.x"
+
+"@turf/meta@6.x":
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/@turf/meta/-/meta-6.0.2.tgz#eb92951126d24a613ac1b7b99d733fcc20fd30cf"
+  integrity sha512-VA7HJkx7qF1l3+GNGkDVn2oXy4+QoLP6LktXAaZKjuT1JI0YESat7quUkbCMy4zP9lAUuvS4YMslLyTtr919FA==
   dependencies:
     "@turf/helpers" "6.x"
 
@@ -5526,6 +5541,11 @@ num2fraction@^1.2.2:
   resolved "https://registry.npmjs.org/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
+number-helper-functions@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/number-helper-functions/-/number-helper-functions-2.0.0.tgz#7040c041885635bf2fe4e4471411e86373586c0e"
+  integrity sha512-+agPS68BgPd2VhAbQoxvlK8iR3K2hYKLQ532io+uHV7FV5u2GuG4MRdjgaoXl0y/Iu/toLJ+K9zB5TYCvAonQQ==
+
 number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
@@ -8419,6 +8439,13 @@ with@^5.0.0:
   dependencies:
     acorn "^3.1.0"
     acorn-globals "^3.0.0"
+
+wkt-parser-helper@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/wkt-parser-helper/-/wkt-parser-helper-1.0.0.tgz#3b9ffafade703a3a312fd9a6c29cda2823f16fac"
+  integrity sha512-WQzK5EY2lwXwOM3lvYQjA+m3YWYdBY2vNqoREaoB1trF1zHqKTyKQ1WSg0plWhh2ANS5ejI/xW3ciT7D7OLDZg==
+  dependencies:
+    wkx "^0.4.8"
 
 wkx@^0.4.8:
   version "0.4.8"
