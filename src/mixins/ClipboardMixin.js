@@ -7,7 +7,11 @@ export default {
       this.showToast('Success', 'Copied to clipboard', toastVariants.SUCCESS);
     },
     notifyClipError(err) {
-      this.showToast('Error', `Error copying to clipboard ${err}`, toastVariants.ERROR);
+      this.showToast(
+        'Error',
+        `Error copying to clipboard ${err}`,
+        toastVariants.ERROR
+      );
     },
   },
 };

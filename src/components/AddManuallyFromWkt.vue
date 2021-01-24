@@ -1,14 +1,15 @@
 <template lang="pug">
-  b-form.mt-3(@submit.prevent="createWktFromText")
-    b-form-group(
-      label="Enter the Well-Known-Text representation of a geometry here",
-      :invalid-feedback="error",
-      valid-feedback="Valid WKT"
-    )
-      b-form-textarea(v-model="wkt", :state="isValid", rows="4", max-rows="20")
-    b-button(type="submit", variant="success", block)
-      b-icon-plus
-      |  Add WKT
+b-form.mt-3(@submit.prevent='createWktFromText')
+  b-form-group(
+    label='Enter the Well-Known-Text representation of a geometry here',
+    :invalid-feedback='error',
+    valid-feedback='Valid WKT'
+  )
+    b-form-textarea(v-model='wkt', :state='isValid', rows='4', max-rows='20')
+  b-button(type='submit', variant='success', block)
+    b-icon-plus
+    |
+    | Add WKT
 </template>
 
 <script>
@@ -41,7 +42,7 @@ export default {
       this.addWkt(this.wkt);
       this.$emit('done');
     },
-    validate: debounce(function(value) {
+    validate: debounce(function (value) {
       let error, valid;
       if (this.hasEnteredText) {
         try {
@@ -65,5 +66,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

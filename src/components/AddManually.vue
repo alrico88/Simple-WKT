@@ -1,9 +1,9 @@
 <template lang="pug">
 b-tabs(pills, no-fade)
-  b-tab(title="From WKT")
-    add-manually-from-wkt(@done="sendDone")
-  b-tab(title="From GeoJSON")
-    add-manually-from-geojson(@done="sendDone")
+  b-tab(title='From WKT')
+    add-manually-from-wkt(@done='sendDone')
+  b-tab(title='From GeoJSON')
+    add-manually-from-geojson(@done='sendDone')
 </template>
 
 <script>
@@ -25,5 +25,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

@@ -1,6 +1,6 @@
 <template lang="pug">
-  .col-8.vh-100.px-0
-    .h-100(:id="id")
+.col-8.vh-100.px-0
+  .h-100(:id='id')
 </template>
 
 <script>
@@ -8,6 +8,8 @@ import uuid from 'uuid/v4';
 import {parseFromWK} from 'wkt-parser-helper';
 import {mapGetters} from 'vuex';
 import circle from '@turf/circle';
+
+const TILE_URL = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
 
 export default {
   data() {
@@ -26,7 +28,7 @@ export default {
   },
   mounted() {
     this.map = L.map(this.id).setView([40.4165, -3.70256], 13);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png').addTo(this.map);
+    L.tileLayer(TILE_URL).addTo(this.map);
     const drawControl = new L.Control.Draw({
       draw: {
         circlemarker: false,

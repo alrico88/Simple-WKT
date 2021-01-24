@@ -1,23 +1,18 @@
-<template>
-  <div
-    id="app"
-    class="container-fluid"
-  >
-    <div class="row">
-      <Map />
-      <Result />
-    </div>
-  </div>
+<template lang="pug">
+#app.container-fluid
+  .row
+    map-component
+    result
 </template>
 
 <script>
-import Map from './components/Map.vue';
+import MapComponent from './components/Map.vue';
 import Result from './components/Result.vue';
 
 export default {
   name: 'App',
   components: {
-    Map,
+    MapComponent,
     Result,
   },
 };

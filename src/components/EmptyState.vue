@@ -1,7 +1,8 @@
 <template lang="pug">
-b-alert.border-primary(variant="primary", :show="show")
+b-alert.border-primary(variant='primary', :show='show')
   b-icon-brush
-  |  Draw or add some shapes first
+  |
+  | Draw or add some shapes first
 </template>
 
 <script>
@@ -17,5 +18,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

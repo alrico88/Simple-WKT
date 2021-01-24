@@ -1,14 +1,20 @@
 <template lang="pug">
-  b-form.mt-3(@submit.prevent="createPolygonFromText")
-    b-form-group(
-      label="Enter the GeoJSON representation of a geometry here",
-      :invalid-feedback="error",
-      valid-feedback="Valid GeoJSON"
+b-form.mt-3(@submit.prevent='createPolygonFromText')
+  b-form-group(
+    label='Enter the GeoJSON representation of a geometry here',
+    :invalid-feedback='error',
+    valid-feedback='Valid GeoJSON'
+  )
+    b-form-textarea(
+      v-model='geojson',
+      :state='isValid',
+      rows='4',
+      max-rows='20'
     )
-      b-form-textarea(v-model="geojson", :state="isValid", rows="4", max-rows="20")
-    b-button(type="submit", variant="success", block)
-      b-icon-plus
-      |  Add GeoJSON
+  b-button(type='submit', variant='success', block)
+    b-icon-plus
+    |
+    | Add GeoJSON
 </template>
 
 <script>
@@ -78,5 +84,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

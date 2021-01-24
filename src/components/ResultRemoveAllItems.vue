@@ -1,12 +1,13 @@
 <template lang="pug">
-  b-alert.border-danger(variant="danger", show)
-    .row.align-items-center
-      .col
-        p.mb-0 Remove all drawn features at once
-      .col-4.text-right
-        b-button(variant="danger", size="sm", @click="deleteAllPolygons")
-          b-icon-trash
-          |  Remove
+b-alert.border-danger(variant='danger', show)
+  .row.align-items-center
+    .col
+      p.mb-0 Remove all drawn features at once
+    .col-4.text-right
+      b-button(variant='danger', size='sm', @click='deleteAllPolygons')
+        b-icon-trash
+        |
+        | Remove
 </template>
 
 <script>
@@ -21,5 +22,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

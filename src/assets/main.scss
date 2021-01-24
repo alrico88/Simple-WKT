@@ -1,8 +1,8 @@
-$font-family-base: "Fira Sans", Helvetica, Arial, sans-serif;
+$font-family-base: 'Fira Sans', Helvetica, Arial, sans-serif;
 
 $font-size-base: 14;
 $body-color: #2c3e50;
-$primary: rgb(44, 62, 80);
+$primary: #5784bf;
 
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import 'node_modules/bootstrap-vue/src/index.scss';
