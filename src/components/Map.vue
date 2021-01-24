@@ -39,11 +39,10 @@ export default {
       let asJSON;
       if (layerType === 'circle') {
         const {lat, lng} = layer._latlng;
-        const circlePolygon = circle([lng, lat], layer.getRadius(), {
+        asJSON = circle([lng, lat], layer.getRadius(), {
           steps: 100,
           units: 'meters',
         });
-        asJSON = circlePolygon;
       } else {
         asJSON = layer.toGeoJSON();
       }
@@ -76,6 +75,8 @@ export default {
         }
         L.geoJSON(parsed, {
           onEachFeature,
+          fillColor: '#39528E',
+          color: '#39528E',
         }).addTo(featureGroup);
       });
       this.addDrawn(featureGroup);

@@ -12,6 +12,18 @@ const vuexLocal = new VuexPersistence({
 
 Vue.use(Vuex);
 
+class WktItem {
+
+  /**
+   * Creates an instance of WktItem
+   * @param {string} wkt
+   */
+  constructor(wkt) {
+    this.id = shortid();
+    this.wkt = wkt;
+  }
+}
+
 export default new Vuex.Store({
   state: {
     polygons: [],
@@ -46,12 +58,13 @@ export default new Vuex.Store({
   },
   actions: {
     addPolygon(context, GeoJSON) {
-      const id = shortid();
       const wkt = convertPolygonToWK(GeoJSON);
-      context.commit('addToPolygons', {
-        id,
-        wkt,
-      });
+      const newPolygon = new WktItem(wkt);
+      context.commit('addToPolygons', newPolygon);
+    },
+    addWkt(context, wkt) {
+      const newPolygon = new WktItem(wkt);
+      context.commit('addToPolygons', newPolygon);
     },
     deletePolygon(context, id) {
       const pos = context.getters.getPolygonIds.indexOf(id);
