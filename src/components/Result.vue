@@ -10,7 +10,7 @@
           )
             b-icon-github
   .row
-    .col
+    .col.pb-3
       ZoomCenterTransition(:group='true')
         result-item(
           v-for='(polygon, index) of getPolygons',
